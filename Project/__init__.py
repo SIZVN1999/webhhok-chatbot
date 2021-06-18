@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    logging.warning('Hello API!')
+    logging.warning('Hello API')
     return 'Hello API!'
 
 
