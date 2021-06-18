@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
+    print()
     return 'hello sizvn', 200
 
 
