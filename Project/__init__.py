@@ -1,4 +1,5 @@
 import requests
+import logging
 import json
 from flask import Flask, request, jsonify
 
@@ -7,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    print('hello sizvn')
+    logging.warning('Hello API!')
     return 'hello sizvn', 200
 
 
