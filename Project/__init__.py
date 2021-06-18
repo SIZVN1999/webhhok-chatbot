@@ -25,31 +25,16 @@ def webhook():
         fulfillmentText = str(numb1)+" + "+str(numb2)+" = "+result
         return {
             "fulfillmentMessages": [
-            {
-            "payload": {
-                "line": {
-                    "type": "template",
-                    "altText": "this is a confirm template",
-                        "template": {
-                            "type": "confirm",
-                            "actions": [
-                                {
-                                    "type": "message",
-                                    "label": "Yes",
-                                    "text": "Yes"
-                                },
-                                {
-                                    "type": "message",
-                                    "label": "No",
-                                    "text": "No"
-                                }
-                            ],
-                            "text": fulfillmentText+" ใช่หรือไม่ ?"
+                {
+                    "payload": {
+                        "line": {
+                            
+                            "type": "text",
+                            "text": fulfillmentText
                         }
                     }
                 }
-            }
-        ]
+            ]
         }, 200
         
     elif(action == 'get.province'):
@@ -57,18 +42,20 @@ def webhook():
         response = requests.request("GET", url)
         data = response.json()
         
-        fulfillmentMessage = "จังหวัดในประเทศไทยมีทั้งหมด "+str(len(data))+" จังหวัด ได้แก่ \n"
+        fulfillmentMessage = "จังหวัดในประเทศไทยมีทั้งหมด "+str(len(data['payload']))+" จังหวัด ได้แก่ \n"
         
-        for item in data:
-            fulfillmentMessage += item['NAME_TH']+" \n"
+        for index, item in enumerate(data['payload']):
+            fulfillmentMessage += "province "+str(index+1)+ " : "+item['NAME_TH']+" \n"
 
-        return   {
+        return {
             "fulfillmentMessages": [
                 {
-                    "text": {
-                        "text": [
-                            fulfillmentMessage
-                        ]
+                    "payload": {
+                        "line": {
+                            
+                            "type": "text",
+                            "text": fulfillmentMessage
+                        }
                     }
                 }
             ]
@@ -85,13 +72,15 @@ def webhook():
         
         product_name = str(data['Product_Name'])
         
-        return {
+        return  {
             "fulfillmentMessages": [
                 {
-                    "text": {
-                        "text": [
-                            "สินค้าที่คุณค้นหาอยู่ คือ : \n"+product_name
-                        ]
+                    "payload": {
+                        "line": {
+                            
+                            "type": "text",
+                            "text": "สินค้าที่คุณตามหา คือ : \n"+product_name
+                        }
                     }
                 }
             ]
