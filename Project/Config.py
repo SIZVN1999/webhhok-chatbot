@@ -1,0 +1,3 @@
+Channel_secret = '0776f388bab55cdb099dbbf11faf7d3e'
+Channel_access_token = 'eRZEiohhL04b2XOHtJriOIC06wTXPtBhKKdhOXBwN3HwiigOk10XSb3bGOEaXtyG4K5B51dbEhaR0K7jNLOCXWWj22snk79GBd0Of+s7ozsoAsFCsSKeQqBrGUIK1bo67AvDfT0r4TZiW8lkoKeclQdB04t89/1O/w1cDnyilFU='
+basic_id = '@264unqup'
