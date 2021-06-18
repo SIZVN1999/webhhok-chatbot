@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     logging.warning('Hello API!')
-    return 'hello sizvn', 200
+    return 'Hello API!'
 
 
 @app.route('/webhook', methods=['POST', 'GET'])
