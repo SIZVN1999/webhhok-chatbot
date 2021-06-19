@@ -2,7 +2,7 @@ import requests
 import logging
 import json
 from flask import Flask, request, jsonify
-from response import text_type, type
+from response import type
 import callAPI
 
 app = Flask(__name__)
@@ -32,6 +32,7 @@ def webhook():
         return jsonify(data), 200
 
     elif(action == 'get.province'):
+        
         response = callAPI.call("http://192.168.3.13:3000/address/province", "GET")
         data = response.json()
 
@@ -47,6 +48,7 @@ def webhook():
         return jsonify(data), 200
 
     elif (action == 'get.productbyId'):
+        
         numb1 = str(query_result.get('parameters').get('number'))
         numb1 = numb1.split('.')
         numb1 = numb1[0]
@@ -59,3 +61,12 @@ def webhook():
         data = type.text("สินค้าที่คุณค้นหาอยู่ คือ : \n"+product_name)
 
         return jsonify(data), 200
+    
+    elif (action == 'get.product'):
+        
+        response = callAPI.call("http://192.168.3.13:3000/Line/campaign", "GET")
+        data = response.json()
+        
+        data2 = type.carousel_template(data)
+        
+        return jsonify(data2), 200
