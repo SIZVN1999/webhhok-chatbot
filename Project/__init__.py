@@ -70,3 +70,7 @@ def webhook():
         data2 = type.carousel_template(data)
         
         return jsonify(data2), 200
+    
+    elif (action == 'BMI-analys.BMI-analys-yes.BMI-analys-yes-custom.BMI-analys-input-yes'):
+        print(action)
+        return action, 200
